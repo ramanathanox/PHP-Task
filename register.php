@@ -8,7 +8,7 @@
     </head>
     <body  bgcolor="#F8F8FF">
         <h1>REGISTRATION FORM</h1>
-        <form id="form" action="post"> 
+        <form id="form" method="post" action='registerinsert.php'> 
             <div>
                 <label> Name </label>
                 <input type="text" id="firstName" name="Firstname"  placeholder=" Name" />
@@ -21,7 +21,7 @@
             </div> 
             <div>
                 <label>Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirm-Password" placeholder="Confirm-Password"/>
+                <input type="password" id="confirmpassword" name="confirmPassword" placeholder="Confirm-Password"/>
                 <div class="message-display confirm-password hidden"></div> 
             </div> 
             <div>
@@ -35,7 +35,7 @@
                 <div class="message-display mobileNumber hidden"></div> 
             </div>
             <div><label>Address </label>
-                <textarea id="address" placeholder=" --Address--"></textarea>
+                <textarea id="address" name='address' placeholder=" --Address--"></textarea>
                 <div class="message-display address hidden"></div> 
             </div>
             <div><label>Gender </label>
@@ -48,17 +48,19 @@
                 <input type="date" id="dateofbirth" name="DateofBirth"  placeholder="dd/mm/yyyy" />
                 <div class="message-display dateofbirth hidden"></div> 
             </div> 
-            <div>
+          <!--  <div>
                 <label>Choose your Profile </label>
                 <input type="file" id="profilePicture" name="ProfilePicture" accept="image/*" placeholder="Profile" />
                 <div class="message-display profilePicture hidden"></div> 
-            </div> 
+            </div> -->
             <div><input type="submit" name="submit" id="submit" value="SUBMIT" />
                 <div class="message-display submit"></div> 
             </div>
+ <p class="notmember">already a member <a href="login.php">Login here!</a> </p>
 
         </form>
         <script src="scriptjquery.js"></script>
+
     </body>
 </html>
 
