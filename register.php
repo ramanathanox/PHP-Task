@@ -8,7 +8,7 @@
     </head>
     <body  bgcolor="#F8F8FF">
         <h1>REGISTRATION FORM</h1>
-        <form id="form" method="post" action='registerinsert.php'> 
+        <form id="form" method="post" action='registerinsert.php' enctype="multipart/form-data"> 
             <div>
                 <label> Name </label>
                 <input type="text" id="firstName" name="Firstname"  placeholder=" Name" />
@@ -48,11 +48,11 @@
                 <input type="date" id="dateofbirth" name="DateofBirth"  placeholder="dd/mm/yyyy" />
                 <div class="message-display dateofbirth hidden"></div> 
             </div> 
-          <!--  <div>
+           <div>
                 <label>Choose your Profile </label>
                 <input type="file" id="profilePicture" name="ProfilePicture" accept="image/*" placeholder="Profile" />
                 <div class="message-display profilePicture hidden"></div> 
-            </div> -->
+            </div> 
             <div><input type="submit" name="submit" id="submit" value="SUBMIT" />
                 <div class="message-display submit"></div> 
             </div>
