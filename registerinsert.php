@@ -3,9 +3,9 @@
 if ($_POST[submit]) {
 
     include ('dbconnection.php');
-    if ($_SERVER(request_method) == post) {  
-    $password=$_POST[Password];
-    $confirmpassword=$_POST[confirmPassword];
+    //if ($_SERVER(request_method) == post) {
+    $password = $_POST[Password];
+    $confirmpassword = $_POST[confirmPassword];
     if ($password == $confirmpassword) {
         $username = $_POST[Firstname];
         $password = MD5($_POST[Password]);
@@ -15,36 +15,15 @@ if ($_POST[submit]) {
         $gender = $_POST[gender];
         $dob = $_POST[DateofBirth];
         $target = "images/";
-        $photo = $target.$_FILES['ProfilePicture']['name'];
-        var_dump(move_uploaded_file($_FILES['ProfilePicture']['tmp_name'], $target.$_FILES['ProfilePicture']['name']));
-//                                                  echo $username;
-//                                                  echo $password;
-//                                                  echo $email;
-//                                                  echo $mobile;
-//                                                  echo $address;
-//                                                  echo $gender;
-//                                                  echo $dob;
-        /*  $profile=('image/'.$_FILES['#profilePicture']['name']);
-
-          if(pre_match('!image!',$_FILES['#profilePicture']['type']))
-          {
-          if(copy($_FILES['#profilePicture']['tmp_name'],$profile))
-          {
-         */
-
-
-
-
-        $insertquery = "insert into Phptask(name,password,email,mobile,address,gender,dob,profilepicture)".
-      " values('$username','$password','$email','$mobile','$address','$gender','$dob','$photo')";
-     
-        
+        $photo = $target . $_FILES['ProfilePicture']['name'];
+        var_dump(move_uploaded_file($_FILES['ProfilePicture']['tmp_name'], $target . $_FILES['ProfilePicture']['name']));
+        $insertquery = "insert into Phptask(name,password,email,mobile,address,gender,dob,profilepicture)" .
+                " values('$username','$password','$email','$mobile','$address','$gender','$dob','$photo')";
         $result = mysqli_query($dbcon, $insertquery) or die("ERROR!!!!!!!!");
         header('location:login.php');
     } else {
         echo "Your password is wrong";
     }
 }
-            }
-//            }
+//}
 ?>
