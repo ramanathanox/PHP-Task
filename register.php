@@ -1,5 +1,12 @@
+<?php
+session_start();
+if ($_SESSION['username']) {
+    header('location:account.php');
+}
+?>
 <html>
     <head>
+
         <title>Registration Form</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,51 +19,51 @@
             <div>
                 <label> Name </label>
                 <input type="text" id="firstName" name="Firstname"  placeholder=" Name" />
-                <div class="message-display firstName hidden"></div> 
+                <span id="firstNameerror"></span> 
             </div> 
             <div>
                 <label>Password </label>
                 <input type="password" id="password" name="Password" placeholder=" Password"/>
-                <div class="message-display password hidden"></div> 
+                <span id="passworderror"></span>
             </div> 
             <div>
                 <label>Confirm Password</label>
                 <input type="password" id="confirmpassword" name="confirmPassword" placeholder="Confirm-Password"/>
-                <div class="message-display confirm-password hidden"></div> 
+                <span id="confirmpassworderror"></span>
             </div> 
             <div>
                 <label>Email </label>
                 <input type="email" id="emailID" name="Mail" placeholder=" Email ID"/>
-                <div class="message-display emailID hidden"></div> 
+                <span id="emailIDerror"></span>
             </div>
             <div>
                 <label>Mobile </label>
                 <input type="text" id="mobileNumber" name="Mobile" placeholder=" Mobile Number"/>
-                <div class="message-display mobileNumber hidden"></div> 
+                <span id="mobileNumbererror"></span>
             </div>
             <div><label>Address </label>
                 <textarea id="address" name='address' placeholder=" --Address--"></textarea>
-                <div class="message-display address hidden"></div> 
+                <span id="addresserror"></span> 
             </div>
             <div><label>Gender </label>
                 <input type="radio" name="gender" id="gender" value="male"><span>Male</span>  
                 <input type="radio" name="gender" id="gender" value="female"/><span>Female</span>
-                <div class="message-display gender hidden"></div> 
+                <span id="gendererror"></span>
             </div> 
             <div>
                 <label>Date of Birth </label>
                 <input type="date" id="dateofbirth" name="DateofBirth"  placeholder="dd/mm/yyyy" />
-                <div class="message-display dateofbirth hidden"></div> 
+                <span id="dateofbirtherror"></span>
             </div> 
-           <div>
+            <div>
                 <label>Choose your Profile </label>
                 <input type="file" id="profilePicture" name="ProfilePicture" accept="image/*" placeholder="Profile" />
-                <div class="message-display profilePicture hidden"></div> 
+                <span id="profilePictureerror"></span>
             </div> 
             <div><input type="submit" name="submit" id="submit" value="SUBMIT" />
                 <div class="message-display submit"></div> 
             </div>
- <p class="notmember">already a member <a href="login.php">Login here!</a> </p>
+            <p class="notmember">already a member <a href="login.php">Login here!</a> </p>
 
         </form>
         <script src="scriptjquery.js"></script>
