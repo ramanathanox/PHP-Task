@@ -1,129 +1,119 @@
+ $(document).ready(function () {
+                $("#submit").click(function () {
+                    var firstName = $('#firstName').val();
 
-/* global firstName */
+                    if (firstName == "") {
+                        $("#firstNameerror").css("display", "inline");
+                        $('#firstNameerror').html("This field is required");
+                        $("input").focus(function () {
+                            $("#firstNameerror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    var firstnameREGEX = /^[A-Za-z]{3,16}$/;
+                    if (!firstnameREGEX.test(firstName)) {
+                        $("#firstNameerror").css("display", "inline");
+                        $('#firstNameerror').html("Name is incorrect");
+                        return false;
+                    }
 
-$(document).ready(function () {
-    var firstName = $('#firstName').val();
-    var lastName = $('#lastName').val();
-    var emailID = $('#emailID').val();
-    var mobileNumber = $('#mobileNumber').val();
-    var department = $('#department option:selected').val();
-    var gender = $('input[name=gender]:checked').length;
-    var hobbies = $('input[name="hobbies"]:checked').length;
-    var feedBack = $('#feedBack').val();
+                    var password = $('#password').val();
+                    if (password == "") {
+                        $("#passworderror").css("display", "inline");
+                        $("#passworderror").html("This field is required");
+                        $("input").focus(function () {
+                            $("#passworderror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    var confirmpassword = $('#confirmpassword').val();
+                    if (confirmpassword == "") {
+                        $("#confirmpassworderror").css("display", "inline");
+                        $("#confirmpassworderror").html("This field is required");
+                        $("input").focus(function () {
+                            $("#confirmpassworderror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    
+                    var emailID = $('#emailID').val();
 
-    $("#firstName").keyup(function ()
-    {
-        var firstName = $('#firstName').val();
-        var firstnameREGEX = /^[A-Za-z]{3,16}$/;
-        if (firstName == "" || !firstnameREGEX.test(firstName))
-        {
-            $('.message-display.firstName').html("<span>Please type Firstname (or) incorrect!!</span>");
-           //$('.message-display.firstName').removeClass('hidden');
-            return false;
-        } else
-        {
-//            $('.message-display.firstName').addClass('hidden');
-            $('.message-display.firstName.hidden').html("<span>Ok!</span>");
-            return false;
-        }
-    });
+                    if (emailID == "") {
+                        $("#emailIDerror").css("display", "inline");
+                        $("#emailIDerror").html("This field is required");
+                        $("input").focus(function () {
+                            $("#emailIDerror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    var emailREGEX = /^\w+([\._ ]?\w+)*@\w+([\._]?\w+)*(\.\w{2,3})$/;
+                    if (!emailREGEX.test(emailID)) {
+                        $("#emailIDerror").css("display", "inline");
+                        $("#emailIDerror").html("Email is incorrect");
+                        return false;
+                    }
 
-    $("#password").keyup(function ()
-    {
-        var password = $('#password').val();
-        var passwordREGEX = /^[A-Za-z0-9]]?$)/;
-        if (password == "" || !passwordREGEX.test(password))
-        {
-            $('.message-display.password').html("<span>Please type password (or) incorrect!!</span>");
-//            $('.message-display.password').addClass('hidden');
-            return false;
-        } else
-        {
-//            $('.message-display.password').removeClass('hidden');
-            $('.message-display.password').html("<span>Ok!</span>");
-            return false;
-        }
-    });
+                    var mobileNumber = $('#mobileNumber').val();
+                    if (mobileNumber == "")
+                    {
+                        $("#mobileNumbererror").css("display", "inline");
+                        $("#mobileNumbererror").html("This field is required");
+                        $("input").focus(function () {
+                            $("#mobileNumbererror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    mobilenumberREGEX = /^[0-9]{10}$/;
+                    if (!mobilenumberREGEX.test(mobileNumber)) {
+                        $("#mobileNumbererror").css("display", "inline");
+                        $('#mobileNumbererror').html("Mobile no must 10 digit");
+                        return false;
+                    }
 
-    $("#emailID").keyup(function ()
-    {
-        var emailID = $('#emailID').val();
-        var emailREGEX = /^\w+([\._ ]?\w+)*@\w+([\._]?\w+)*(\.\w{2,3})$/;
-        if (emailID == "" || !emailREGEX.test(emailID))
-        {
-            $('.message-display.emailID').html("<span>Enter your email (or) Your email is invalid</span>");
-//            $('.message-display.emailID').addClass('hidden');
-            return false;
-        } else
-        {
-//            $('.message-display.emailID').removeClass('hidden');
-            $('.message-display.emailID').html("<span>Ok!</span>");
-            return false;
-        }
-    });
+                    var address = $('#address').val();
 
-    $("#mobileNumber").keyup(function ()
-    {
-        var mobileNumber = $('#mobileNumber').val();
-        mobilenumberREGEX = /^[0-9]{10}$/;
-        if (mobileNumber == "" || !mobilenumberREGEX.test(mobileNumber))
-        {
-            $('.message-display.mobileNumber').html("<span> Please type valid number (or) incorrect!!</span>");
-//            $('.message-display.mobileNumber').addClass('hidden');
-            return false;
-        } else
-        {
-//            $('.message-display.mobileNumber').removeClass('hidden');
-            $('.message-display.mobileNumber').html("<span>Ok!</span>");
-            return false;
-        }
-    });
-
-    $("#department").keyup(function ()
-    {
-        var department = $('#department option:selected').val();
-        if (department == "--------select--------")
-        {
-            $('.message-display.department').html("<span> Please select your department!!</span>");
-//            $('.message-display.department').addClass('hidden');
-            return false;
-        } else
-        {
-//            $('.message-display.department').removeClass('hidden');
-            $('.message-display.department').html("<span>Ok!</span>");
-            return false;
-        }
-    });
-
- /*   var gender = $('input[name=gender]:checked').length;
-    if (gender <= 0)
-    {
-
-        alert("Select your gender");
-        return false;
-    }
-
-    var hobbies = $('input[name="hobbies"]:checked').length;
-    if (hobbies <= 0)
-    {
-        alert("Select your hobbies");
-        return false;
-    }*/
-    $("#address").keyup(function ()
-    {
-        var address = $('#address').val();
-        var addressREGEX = /^[A-Za-z]*$/;
-        if (address == "" || !addressREGEX.test(address))
-        {
-            $('.message-display.address').html("<span> Please type your address!!</span>");
-//            $('.message-display.address').addClass('hidden');
-            return false;
-        } else
-        {
-//            $('.message-display.address').removeClass('hidden');
-            $('.message-display.address').html("<span>Ok!</span>");
-            return false;
-        }
-    });
-
-});
+                    if (address == "")
+                    {
+                        $("#addresserror").css("display", "inline");
+                        $("#addresserror").html("This field is required");
+                        $("textarea").focus(function () {
+                            $("#addresserror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    var addressREGEX = /^[A-Za-z]*$/;
+                    if (!addressREGEX.test(address))
+                    {
+                        $("#addresserror").css("display", "inline");
+                        $('#addresserror').html("Mobile no must 10 digit");
+                        return false;
+                    }
+                    var gender = $('#gender').val();
+                    if ($("#gender:checked").length == 0) {
+                        $("#gendererror").css("display", "inline");
+                        $("#gendererror").html("This field is required");
+                        $("input").focus(function () {
+                            $("#gendererror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    var dob = $('#dateofbirth').val();
+                    if (dob == "") {
+                        $("#dateofbirtherror").css("display", "inline");
+                        $("#dateofbirtherror").html("This field is required");
+                        $("input").focus(function () {
+                            $("#dateofbirtherror").css("display", "none");
+                        });
+                        return false;
+                    }
+                    var photo = $('#profilePicture').val();
+                    if (photo == "") {
+                        $("#profilePictureerror").css("display", "inline");
+                        $("#profilePictureerror").html("This field is required");
+                        $("input").focus(function () {
+                            $("#profilePictureerror").css("display", "none");
+                        });
+                        return false;
+                    }
+                });
+            });
